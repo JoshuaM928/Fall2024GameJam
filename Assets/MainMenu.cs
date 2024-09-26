@@ -19,8 +19,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayGame()
-    {
-        TimeManager.instance.ResetTime();
+    { 
         Time.timeScale = 1f;
         SceneManager.LoadSceneAsync("Level 1");
     }

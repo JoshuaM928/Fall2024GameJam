@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
@@ -11,28 +12,31 @@ public class TimeManager : MonoBehaviour
 
     private Text theText;
     
-    public static TimeManager instance;
+    private static TimeManager instance;
+
+   
 
     //continue
-    void Awake()
-{
-    
-    if (instance == null)
-    {
-        instance = this;
-        DontDestroyOnLoad(transform.root.gameObject); // This will make the entire Canvas persist
+    void Awake() 
+    { 
+        
+        if (instance == null)
+        {
+           instance = this;
+           DontDestroyOnLoad(transform.root.gameObject); // This will make the entire Canvas persist
+        }
+        else
+        {
+           Destroy(gameObject);
+        }
     }
-    else
-    {
-        Destroy(gameObject);
-    }
-}
 
     //private PauseMenu thePauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         countingTime = startingTime;
         theText = GetComponent<Text>();
         
@@ -43,7 +47,11 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
         // if(PauseMenu.activeSelf)
-
+        string Scene = SceneManager.GetActiveScene().name;
+        if (Scene == "Main Menu")
+        {
+            Destroy(this.gameObject);
+        }
         countingTime -= Time.deltaTime; //will slowly decrease the time 
 
         if(countingTime <= 0)
