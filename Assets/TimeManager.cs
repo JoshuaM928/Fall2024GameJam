@@ -10,6 +10,22 @@ public class TimeManager : MonoBehaviour
     private float countingTime;
 
     private Text theText;
+    
+    private static TimeManager instance;
+
+    //continue
+    void Awake()
+{
+    if (instance == null)
+    {
+        instance = this;
+        DontDestroyOnLoad(transform.root.gameObject); // This will make the entire Canvas persist
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
 
     //private PauseMenu thePauseMenu;
 
