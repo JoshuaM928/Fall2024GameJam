@@ -11,11 +11,12 @@ public class TimeManager : MonoBehaviour
 
     private Text theText;
     
-    private static TimeManager instance;
+    public static TimeManager instance;
 
     //continue
     void Awake()
 {
+    
     if (instance == null)
     {
         instance = this;
@@ -54,9 +55,11 @@ public class TimeManager : MonoBehaviour
    
     }
 
-    public void RestTime()
+    public void ResetTime()
     {
         countingTime = startingTime;
 
     }
+
+
 }
