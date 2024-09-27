@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - barrier
+  - dies
   layers:
   - Default
   - TransparentFX

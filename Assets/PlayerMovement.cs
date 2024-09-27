@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
     public float speed;
     public float jump;
     public bool isJumping;
     private float Move;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
+    public Collider2D col;
+
+
+
+    
     // Start is called before the first frame update
     void Start()
     {
-     rb = GetComponent<Rigidbody2D>();   
-        
+
+        rb = GetComponent<Rigidbody2D>();  
+        col = GetComponent<Collider2D>();
+    
     }
 
     // Update is called once per frame
@@ -31,16 +41,21 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-    }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.CompareTag("Ground"))
-        {
-            isJumping = false; //if player is collided with object (ground) then means Not jumping.
-        }
+       
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Ground"))
+         {
+             isJumping = false; //if player is collided with object (ground) then means Not jumping.
+         }
+
+    }
+
+    
+    public void OnCollisionExit2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Ground"))
         {
