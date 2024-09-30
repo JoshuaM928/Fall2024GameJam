@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class finishLine : MonoBehaviour
+public class LvL1finishLine : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
+      
         
     }
 
@@ -22,6 +22,11 @@ public class finishLine : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadScene("Level 2");
-        }
+        } 
+
+        
     }
+
+
+
 }

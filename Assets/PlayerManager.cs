@@ -9,9 +9,11 @@ public class PlayerManager : MonoBehaviour
     public GameObject gameOverScreen;
 
     private TimeManager timeManager;
+
     public void Awake()
     {
         isGameOver = false;
+    
     } 
 
 
@@ -44,9 +46,9 @@ public class PlayerManager : MonoBehaviour
     //Replay game function
     public void ReplayLevel()
     {
-        // SceneManager.LoadScene("Level 1");
         
         isGameOver = false;
+        
 
         // Deactivate the game over screen
         gameOverScreen.SetActive(false);
