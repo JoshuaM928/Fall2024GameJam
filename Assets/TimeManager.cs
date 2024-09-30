@@ -14,7 +14,8 @@ public class TimeManager : MonoBehaviour
     
     private static TimeManager instance;
 
-   
+    // Access to the PlayerManager
+    private PlayerManager playerManager;
 
     //continue
     void Awake() 
@@ -39,8 +40,14 @@ public class TimeManager : MonoBehaviour
         
         countingTime = startingTime;
         theText = GetComponent<Text>();
+
+
+        //Find player Manager
+        playerManager = FindAnyObjectByType<PlayerManager>();
         
         //thePauseMenu = FindAnyObjectByType<PauseMenu>();
+
+
     }
 
     // Update is called once per frame
@@ -56,7 +63,10 @@ public class TimeManager : MonoBehaviour
 
         if(countingTime <= 0)
         {
-                //game over
+            countingTime = 0; // Prevents going negative
+            PlayerManager.isGameOver = true;
+           // playerManager.isGameOver();
+        
         }
 
         theText.text = "" + Mathf.Round(countingTime);

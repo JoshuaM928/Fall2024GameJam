@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-
-
-     //Game over screen hidden
-     public static bool isGameOver;
+    //Game over screen hidden
+    public static bool isGameOver;
      
-     public GameObject gameOverScreen;
-    private void Awake()
+    public GameObject gameOverScreen;
+
+    private TimeManager timeManager;
+    public void Awake()
     {
         isGameOver = false;
     } 
@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeManager = FindAnyObjectByType<TimeManager>();
         
     }
 
@@ -39,7 +40,6 @@ public class PlayerManager : MonoBehaviour
         }
         
     }
-
     
     //Replay game function
     public void ReplayLevel()
@@ -50,6 +50,9 @@ public class PlayerManager : MonoBehaviour
 
         // Deactivate the game over screen
         gameOverScreen.SetActive(false);
+
+        //Reset the timer
+        timeManager.ResetTime();
 
         // Reload the scene
         SceneManager.LoadScene("Level 1");
