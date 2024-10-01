@@ -49,15 +49,16 @@ public class PlayerManager : MonoBehaviour
         
         isGameOver = false;
         
-
         // Deactivate the game over screen
         gameOverScreen.SetActive(false);
 
         //Reset the timer
-        timeManager.ResetTime();
+        //timeManager.ResetTime();
+
+        Destroy(timeManager.gameObject);
 
         // Reload the scene
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadSceneAsync("Level 1");
 
     }
 }
